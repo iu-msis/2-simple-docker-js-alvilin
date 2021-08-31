@@ -45,6 +45,11 @@ a:hover {
     justify-content: center;
 }
 
+.container-center {
+  display: flex;
+  justify-content: center;
+}
+
 .atopnavbar {
 	padding-left: .5rem;
 }
