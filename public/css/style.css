@@ -1,3 +1,5 @@
+/* code examples for alignment adapted from w3schools */
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
 html, body {
@@ -10,6 +12,10 @@ html, body {
 h6.stylesource {
   font-style: italic;
   font-weight: bold;
+}
+
+.middle { 
+	vertical-align: middle;
 }
 
 th a {
@@ -254,9 +260,10 @@ footer a {
 	max-width: 75px;
 	height: auto;
 	display: block;
-	margin-top: 1rem;
+	margin-top: .5rem;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: .5rem;
 	width: 40%;
 }
 
