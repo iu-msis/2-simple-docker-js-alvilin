@@ -56,7 +56,8 @@
 	
 	<!-- Table for Books-->
 	<form action="" method="get">
-	<div class="container-center overflow-x: auto;">
+		<div class="container-center">
+		<div style="overflow-x: auto;">
 		<table class="table table-hover table-striped">
         
 		<thead class="hbcolor">
@@ -110,11 +111,25 @@
 			<th style="vertical-align: middle">350</th>
 			<th style="vertical-align: middle">$44.99</th>
 		</tr>
-			
-		</table>				
+
+		<tr>
+			<th style="vertical-align: middle" class="text-center"><input type="file" id="Cover" name="Cover" class="btn btn-primary btn-lg"></th>
+			<th style="vertical-align: middle"><input type="text" id="Title" name="Title" required minlength="4" maxlength="25" size="25"></th>
+			<th style="vertical-align: middle"><input type="text" id="Author" name="Author" required minlength="4" maxlength="25" size="25"></th>
+			<th style="vertical-align: middle"><input type="date" id="Date" name="Date" value="2021-01-01" min="1900-01-01" max="2021-12-01"></th>
+			<th style="vertical-align: middle"><input type="text" id="Publisher" name="Publisher" required minlength="4" maxlength="25" size="25"></th>
+			<th style="vertical-align: middle"><input type="number" id="Pages" name="Pages" min="1" max="999"></th>
+			<th style="vertical-align: middle"><input type="text" id="Title" name="Title" required minlength="4" maxlength="25" size="25"></th>
+		</tr>
+		</table>
+	</div>
+	</div>
+	</div>
+
+	<div id="inner">
+		<input type="submit" id="submit" class="btn btn-primary btn-lg center" value="Submit" /> 
 	</div>
 	</form>
-	</div>
 	
 	<div class="col-6 left">
 		<hr class="light">

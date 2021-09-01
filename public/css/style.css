@@ -2,6 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
+#inner {
+  width: 0%;
+  margin: auto;
+}
+
 html, body {
 	height: 100%;
 	width: 100%;
