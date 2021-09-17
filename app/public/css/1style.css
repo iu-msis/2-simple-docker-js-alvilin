@@ -1,10 +1,31 @@
+/* code examples for alignment adapted from w3schools */
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+#inner {
+  width: 0%;
+  margin: auto;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
 
 html, body {
 	height: 100%;
 	width: 100%;
 	font-family: 'Poppins', sans-serif;
 	color: #222;
+}
+
+h6.stylesource {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.middle { 
+	vertical-align: middle;
 }
 
 th a {
@@ -14,12 +35,10 @@ th a {
 a {
 	color: black;
 	font-size: 150%;
-	text-decoration: none;
 }
 
 a:hover {
 	color: #800000;
-	text-decoration: none;
 }
 
 .tablelink {
@@ -36,10 +55,15 @@ a:hover {
 }
 
 .btn-sm-width {
-    width: 60px;
+	width: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container-center {
+  display: flex;
+  justify-content: center;
 }
 
 .atopnavbar {
@@ -49,7 +73,6 @@ a:hover {
 .navbar {
 	padding: .8rem; /* .8rem - 16px */
 	background-color: white !important;
-	margin-left: auto !important;
 }
 
 .navbar-nav li {
@@ -57,7 +80,7 @@ a:hover {
 }
 
 .nav-link {
-	font-size: 1em !important;
+	font-size: 1.1em !important;
 }
 
 .carousel-inner {
@@ -238,22 +261,19 @@ footer a {
   height: auto;
 }
 
-.headshot {
-  max-width: 55px !important;
-}
-
 .center {
   text-align: center;
     display: block;
 }
 
 .headshot {
-	max-width: 300px;
+	max-width: 75px;
 	height: auto;
 	display: block;
-	margin-top: 1rem;
+	margin-top: .5rem;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: .5rem;
 	width: 40%;
 }
 
@@ -291,6 +311,10 @@ footer a {
     width: 100%;
     height: 100%;
 }
+
+/*---based from:
+
+https://www.youtube.com/watch?v=9cKsq14Kfsw&t=621s --*/
 
 /*---Media Queries --*/
 @media (max-width: 992px) {
@@ -410,6 +434,9 @@ figure {
 [class*="col-"] {
     padding: 1rem;
 }
+
+
+
 
 
 /*
