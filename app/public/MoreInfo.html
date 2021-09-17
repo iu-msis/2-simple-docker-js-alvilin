@@ -47,8 +47,8 @@
 	<div class="container-fluid padding">
 		<div class="row welcome text-center">
 			<div class="col-12" id="myapp">
-				<h1 class="display-4 padding">{{person.name.first}} {{person.name.last}}</h1>
-				<img src="img/79.jpg">
+				<h1 class="display-4 padding">{{firstName}} {{lastName}}</h1>
+				<img :class="gender" :src="picture">
 			</div>
 		</div>
 	</div>
@@ -58,33 +58,6 @@
 		<div class="row jumbotron">
 			<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10"></div>
 		</div>
-	</div>
-	
-	
-	<!-- Table for Fake Profile-->
-	<div class="container-center">
-		<table class="table table-condensed table-hover col-4" id="myapp">
-			<tr class="h5">
-				<th scope="col">Full Name</th>
-				<th scope="col">{{person.name.first}} {{person.name.middle}} {{person.name.last}}</th>
-			</tr>
-			<tr class="h5">
-				<th scope="col">Country of Origin</th>
-				<th scope="col">USA</th>
-			</tr>
-			<tr class="h5">
-				<th scope="col">Birthdate</th>
-				<th scope="col">09/06/1950</th>
-			</tr>
-			<tr class="h5">
-				<th scope="col">Age</th>
-				<th scope="col">70</th>
-			</tr>
-			<tr class="h5">
-				<th scope="col">Email Address</th>
-				<th scope="col">jrambo2021@iu.edu</th>
-			</tr>
-		</table>				
 	</div>
 
 	<div class="container padding">
