@@ -1,7 +1,6 @@
 const myApp = {
     data() {
       return {
-        "person": {},
         firstName: 'John',
         lastName: 'Doe',
         email: 'john@gmail.com',
@@ -16,7 +15,6 @@ const myApp = {
         .then( (responseJson) => {
             console.log(responseJson);
             console.log("C");
-            this.person = responseJson.results[0];
 
             this.firstName = responseJson.results[0].name.first
             this.lastName = responseJson.results[0].name.last
