@@ -4,14 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>D&S HW</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 	<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
-	<script src="js/sorttable.js"></script>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ms-auto">
@@ -42,92 +42,67 @@
 		</div>
 	</div>
 
-
 	<!--- Welcome Section -->
-	<div class="container-fluid padding">
-		<div class="row welcome text-center ">
-			<div class="col-12">
-				<h1 class="display-4 padding">Jerry Rambo's Reading List</h1>
+    <div id="offerApp" class="container">
+        <div class="row align-items-start">
+          <div class="col col-4">
+            <!-- <p>Profile information for {{ person.name.first }}</p> -->
+            <div v-for="s in students" v-on:click="selectStudent(s)"
+             :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}]">
+              <span class="userName">{{ s.username }}</span><br>
+              <span class="studentName">{{ s.name }}</span>
+            </div>
+          </div>
+
+          <div  class="col col-8" v-if="selectedStudent">
+            <h1>Offers for {{ selectedStudent.name }}</h1>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Salary</th>
+                  <th>Bonus</th>
+                  <th>Offer Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+                <tbody>
+                    <tr v-for="offer in offers">
+                        <td>{{ offer.companyName }}</td>
+                        <td>{{ prettyDollar(offer.salary) }}</td>
+                        <td>{{ prettyDollar(offer.bonus) }}</td>
+                        <td>{{ offer.offerDate }}</td>
+                    </tr>
+                </tbody>
+            </table>
+			<div class="noOffers" v-if="! offers.length">
+				<h3>No offers. 😥</h3>
 			</div>
-		</div>	
-	
-		<!-- Table for Books-->
-		<form action="" method="get">
-			<div class="table-responsive container-center">
-				<table class="table table-responsive table-hover table-striped sortable">
-						<thead class="hbcolor">
-							<tr class="h5">
-								<th scope="col" class="text-center">Cover</th>
-								<th scope="col">Title</th>
-								<th scope="col">Author(s)</th>
-								<th scope="col">Year Published</th>
-								<th scope="col">Publisher</th>
-								<th scope="col">Page Count</th>
-								<th scope="col">MSRP</th>
-							</tr>
-						</thead>
-						<tr>
-							<th style="vertical-align: middle"><a href="img/GiantKiller.jpg"><img src="img/GiantKiller.jpg" class="headshot"></th></a>
-							<th style="vertical-align: middle">The Giant Killer: The incredible true story</th>
-							<th style="vertical-align: middle">David A. Yuzuk</th>
-							<th style="vertical-align: middle">2020</th>
-							<th style="vertical-align: middle">Mission Point</th>
-							<th style="vertical-align: middle">245</th>
-							<th style="vertical-align: middle">$12.99</th>
-						</tr>
-						<tr>
-							<th style="vertical-align: middle"><a href="img/dotnet.jpg"><img src="img/dotnet.jpg" class="headshot"></th></a>
-							<th style="vertical-align: middle">ASP.NET Core 5 and Angular</th>
-							<th style="vertical-align: middle">Valerio De Sanctis</th>
-							<th style="vertical-align: middle">2021</th>
-							<th style="vertical-align: middle">Packt Publishing</th>
-							<th style="vertical-align: middle">746</th>
-							<th style="vertical-align: middle">$39.99</th>
-						</tr>
-						<tr>
-							<th style="vertical-align: middle"><a href="img/quantum.jpg"><img class="headshot" src="img/quantum.jpg"></th></a>
-							<th style="vertical-align: middle">Quantum Computing: An Applied Approach</th>
-							<th style="vertical-align: middle">Jack D. Hidary</th>
-							<th style="vertical-align: middle">2019</th>
-							<th style="vertical-align: middle">Springer</th>
-							<th style="vertical-align: middle">398</th>
-							<th style="vertical-align: middle">$39.99</th>
-						</tr>
-						<tr>
-							<th style="vertical-align: middle"><a href="img/cicd.jpg"><img class="headshot" src="img/cicd.jpg"></th></a>
-							<th style="vertical-align: middle">Continuous Delivery with Docker and Jenkins</th>
-							<th style="vertical-align: middle">Rafal Leszko</th>
-							<th style="vertical-align: middle">2019</th>
-							<th style="vertical-align: middle">Packt Publishing</th>
-							<th style="vertical-align: middle">350</th>
-							<th style="vertical-align: middle">$44.99</th>
-						</tr>
-						<tr>
-							<th style="vertical-align: middle" class="text-center"><input type="file" id="Cover" name="Cover" class="btn btn-primary btn-lg"></th>
-							<th style="vertical-align: middle"><input type="text" id="Title" name="Title" required minlength="4" maxlength="25" size="25"></th>
-							<th style="vertical-align: middle"><input type="text" id="Author" name="Author" required minlength="4" maxlength="25" size="25"></th>
-							<th style="vertical-align: middle"><input type="date" id="Date" name="Date" value="2021-01-01" min="1900-01-01" max="2021-12-01"></th>
-							<th style="vertical-align: middle"><input type="text" id="Publisher" name="Publisher" required minlength="4" maxlength="25" size="25"></th>
-							<th style="vertical-align: middle"><input type="number" id="Pages" name="Pages" min="1" max="999"></th>
-							<th style="vertical-align: middle"><input type="text" id="Title" name="Title" required minlength="4" maxlength="25" size="25"></th>
-						</tr>
-					</table>
-				</div>
-				<div class="container-right padding">
-					<input type="submit" id="submit" class="btn btn-primary btn-lg center" value="Submit" /> 
-				</div>
 			</div>
+			
+
+
 		</div>
-	</form>
+
+
+	<!--- Jumbotron -->
+	<div class="container-fluid">
+		<div class="row jumbotron">
+			<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10"></div>
+		</div>
+	</div>
+
+	<div class="container padding">
+		<a href="img/uits.png"><img class="center headshot padding" src="img/uits.png"></a>
+	</div>
 	
-	<div class="container col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+	<div class="col-6 left">
 		<hr class="light">
 		<h6 class="stylesource">Image Sources:</h6>
 		<h6 class="stylesource">Clickable SOAA logo - https://soaa.org/smallest-green-beret/</h6>
-		<h6 class="stylesource">Clickable Amazon Giant Killer Cover - https://www.amazon.com/Giant-Killer-incredible-smallest-Military-Vietnam-ebook/dp/B086VP8R5L/?_encoding=UTF8&pd_rd_w=govUW&pf_rd_p=97e5a12c-5e5c-4415-bc8d-e409b5878c4b&pf_rd_r=90NWETNDV1FD4SED5RVV&pd_ rd_r=4190a816-4ddb-4a90-aa7c-c6095137c581&pd_rd_wg=d5DGf&ref_=pd_gw_pd_cart_vw_crc</h6>
-		<h6 class="stylesource">CICD Cover - https://images-na.ssl-images-amazon.com/images/I/41lPh+vZh2L._SX404_BO1,204,203,200_.jpg  </h6>
-		<h6 class="stylesource">Quantum Cover - https://www.amazon.com/Quantum-Computing-Approach-Jack-Hidary-ebook/dp/B07X7NDFLZ/ref=sr_1_3_sspa?dchild=1& keywords=quantum+computing&qid=1630453547&sr=8-3-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzMVdTNFgy Mk5CTFhVJmVuY3J5cHRlZElkPUEwOTAwMDAxMThaQ1Q1SlVaTzVOTCZlbmNyeXB0ZWRBZElkPUEwNTEzNDAwMVVLWTRH MEhWVVlEMCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=</h6>
-		<h6 class="stylesource">NETCORE Cover - https://www.amazon.com/ASP-NET-Core-Angular-Full-stack-development/dp/1800560338/ref=sr_1_11?crid=34TD5P943UE9&dchild=1& keywords=dotnet+core&qid=1630453741&s=books&sprefix= dotnet%2Cstripbooks%2C206&sr=1-11</h6>
+		<h6 class="stylesource">Profile - https://randomuser.me/api/portraits/men/79.jpg</h6>
+		<h6 class="stylesource">Clickable UITS - https://www.facebook.com/iu.uits/</h6>
 		<hr class="light">
 	</div>
 
@@ -148,26 +123,29 @@
 	</div>
 
 	</div>
-</body>
 
-<!--- Footer -->
-<footer>
-	<div class="text-center">
-		<div class="container-fluid padding col-12">
-			<img src="img/IU_Trident_Image.jpg" class="footer-image">
-				<hr class="light">
-				<h5>MSIS Office</h5>
-				<hr class="light">
-				<p>1275 E 10th St</p>
-				<p>Bloomington, IN 47405</p>
-				<div class="col-12">
-					<hr class="light-100">
-					<h5>&copy; Indiana University</h5>
+	<!--- Footer -->
+	<footer>
+		<div class="text-center">
+			<div class="container-fluid padding col-12">
+				<img src="img/IU_Trident_Image.jpg" class="footer-image">
+						<hr class="light">
+						<h5>MSIS Office</h5>
+						<hr class="light">
+						<p>1275 E 10th St</p>
+						<p>Bloomington, IN 47405</p>
+					<div class="col-12">
+						<hr class="light-100">
+						<h5>&copy; Indiana University</h5>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
 </html>
-
-
