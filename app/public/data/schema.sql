@@ -10,8 +10,8 @@ CREATE TABLE student (
 
 INSERT INTO student (id, bookId, name) VALUES 
 (1, 'SCIFI', 'Aliens'),
-(2, 'beth1', 'Beth Barnhart'),
-(3, 'bipin', 'Prof. Prabhakar');
+(2, 'THRILLER', 'Mystery'),
+(3, 'MILITARY', 'Revolutionary War');
 
 -- SELECT * FROM students;
 
@@ -28,11 +28,15 @@ CREATE TABLE offer (
 );
 
 INSERT INTO offer(id, studentId, bookTitle, msrp, usedPrice, publishedDate, rating) VALUES
-  (1, 2, 'KPMG', 95000, 7000, '2021-09-30', 3),
-  (2, 2, 'Deloitte Digital', 94000, 12000, '2021-10-03', 3),
-  (3, 2, 'IU, ISGP', 54000, 10, '2021-10-05', 5),
-  (4, 3, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (5, 1, 'Close Encounters of the Third Kind', 10000, 1222, '2021-01-01', 10)
+  (1, 1, 'KPMG', 95000, 7000, '2021-09-30', 3),
+  (2, 1, 'Deloitte Digital', 94000, 12000, '2021-10-03', 3),
+  (3, 1, 'IU, ISGP', 54000, 10, '2021-10-05', 5),
+  (4, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
+  (5, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
+  (6, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
+  (7, 3, 'Amazon', 122000, 11000, '2021-10-15', 1),
+  (8, 3, 'Amazon', 122000, 11000, '2021-10-15', 1),
+  (9, 3, 'Close Encounters of the Third Kind', 10000, 1222, '2021-01-01', 10)
 ;
 
 -- COMMIT;
