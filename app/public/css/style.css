@@ -411,21 +411,22 @@ figure {
     padding: 1rem;
 }
 
+.student {
+    margin: 10px 2px;
+    padding: 4px;
+    border: 1px solid #800000;
+    background-color: grey;
+}
 
-/*
-Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
+.selected {
+    background-color: #800000;
+}
 
-Small (sm) devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+.userName {
+    font-weight:bold;
+	color: white;
+}
 
-Medium (md) devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-Large (lg) devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra (xl) large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
-
+.studentName{
+    color: white;
+}
