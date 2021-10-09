@@ -25,7 +25,7 @@
 				<ul class="navbar-nav ms-auto dropdown">
 					<li class="nav-item">
 						<ul class="nav navbar-nav">
-							<li class="atopnavbar"><a href="index.html">Home</a></li>
+							<li class="atopnavbar"><a href="index.php">Home</a></li>
 							<li class="atopnavbar"><a href="MoreInfo.html">More Info</a></li>
 							<li class="atopnavbar"><a href="Books.html">Reading List</a></li>
 						</ul>
@@ -49,7 +49,7 @@
             <!-- <p>Profile information for {{ person.name.first }}</p> -->
             <div v-for="s in students" v-on:click="selectStudent(s)"
              :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}]">
-              <span class="userName">{{ s.username }}</span><br>
+              <span class="userName">{{ s.bookId }}</span><br>
               <span class="studentName">{{ s.name }}</span>
             </div>
           </div>
@@ -60,24 +60,25 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Company</th>
-                  <th>Salary</th>
-                  <th>Bonus</th>
-                  <th>Offer Date</th>
-                  <th>Status</th>
+                  <th>Title</th>
+                  <th>MSRP</th>
+                  <th>Used from</th>
+                  <th>Published Date</th>
+                  <th>Editor Rating</th>
                 </tr>
               </thead>
                 <tbody>
                     <tr v-for="offer in offers">
-                        <td>{{ offer.companyName }}</td>
-                        <td>{{ prettyDollar(offer.salary) }}</td>
-                        <td>{{ prettyDollar(offer.bonus) }}</td>
-                        <td>{{ offer.offerDate }}</td>
+                        <td>{{ offer.bookTitle }}</td>
+                        <td>{{ prettyDollar(offer.msrp) }}</td>
+                        <td>{{ prettyDollar(offer.usedPrice) }}</td>
+                        <td>{{ offer.publishedDate }}</td>
+						<td>{{ offer.rating }}</td>
                     </tr>
                 </tbody>
             </table>
 			<div class="noOffers" v-if="! offers.length">
-				<h3>No offers. 😥</h3>
+				<h3>No books. 😥</h3>
 			</div>
 			</div>
 			
