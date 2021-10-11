@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="css/style2.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
@@ -41,7 +41,7 @@
             <!-- <p>Profile information for {{ person.name.first }}</p> -->
             <div v-for="s in students" v-on:click="selectStudent(s)"
              :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}]">
-              <span class="userName">{{ s.username }}</span><br>
+              <span class="userName">{{ s.bookId }}</span><br>
               <span class="studentName">{{ s.name }}</span>
             </div>
           </div>
@@ -53,22 +53,44 @@
               <thead>
                 <tr>
                   <th>Company</th>
-                  <th>Salary</th>
-                  <th>Bonus</th>
+                  <th>msrp</th>
+                  <th>usedPrice</th>
                   <th>Offer Date</th>
                   <th>Status</th>
+                  <th>Rating</th>
                 </tr>
               </thead>
                 <tbody>
                     <tr v-for="offer in offers">
-                        <td>{{ offer.companyName }}</td>
-                        <td>{{ prettyDollar(offer.salary) }}</td>
-                        <td>{{ prettyDollar(offer.bonus) }}</td>
-                        <td>{{ offer.offerDate }}</td>
+                        <td>{{ offer.bookTitle }}</td>
+                        <td>{{ prettyDollar(offer.msrp) }}</td>
+                        <td>{{ prettyDollar(offer.usedPrice) }}</td>
+                        <td>{{ offer.publishedDate }}</td>
+                        <td>{{ offer.rating }}</td>
                     </tr>
                 </tbody>
             </table>
 
+            <form v-on:submit.prevent="postNewOffer">
+              <div class="mb-3">
+                <label for="bookTitle" class="form-label">Company Name</label>
+                <input type="text" v-model="offerForm.bookTitle"
+                 class="form-control" id="bookTitle">
+              </div>
+              <div class="mb-3">
+                <label for="msrp" class="form-label">msrp</label>
+                <input type="number" v-model="offerForm.msrp" class="form-control" id="msrp">
+              </div>
+              <div class="mb-3">
+                <label for="usedPrice" class="form-label">usedPrice</label>
+                <input type="number" v-model="offerForm.usedPrice" class="form-control" id="usedPrice">
+              </div>
+              <div class="mb-3">
+                <label for="publishedDate" class="form-label">publishedDate</label>
+                <input type="date" v-model="offerForm.publishedDate" class="form-control" id="publishedDate">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
             <div class="noOffers" v-if="! offers.length">
               <h3>No offers. 😥</h3>
             </div>
