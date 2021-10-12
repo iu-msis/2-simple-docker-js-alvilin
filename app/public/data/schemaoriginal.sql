@@ -18,7 +18,7 @@ INSERT INTO student (id, bookGenre, name) VALUES
 DROP TABLE IF EXISTS offer;
 CREATE TABLE offer (
 	id int PRIMARY KEY AUTO_INCREMENT,
-    bookId int NOT NULL REFERENCES student(id) 
+    studentId int NOT NULL REFERENCES student(id) 
         ON DELETE CASCADE ON UPDATE CASCADE,
 	bookTitle VARCHAR(50) NOT NULL DEFAULT '',
     msrp int NOT NULL DEFAULT 0,
@@ -27,16 +27,13 @@ CREATE TABLE offer (
     rating int NOT NULL DEFAULT 0
 );
 
-INSERT INTO offer(id, bookId, bookTitle, msrp, usedPrice, publishedDate, rating) VALUES
-  (1, 1, 'KPMG', 95000, 7000, '2021-09-30', 3),
-  (2, 1, 'Deloitte Digital', 94000, 12000, '2021-10-03', 3),
-  (3, 1, 'IU, ISGP', 54000, 10, '2021-10-05', 5),
-  (4, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (5, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (6, 2, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (7, 3, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (8, 3, 'Amazon', 122000, 11000, '2021-10-15', 1),
-  (9, 3, 'Close Encounters of the Third Kind', 10000, 1222, '2021-01-01', 10)
+INSERT INTO offer(id, studentId, bookTitle, msrp, usedPrice, publishedDate, rating) VALUES
+  (1, 1, 'Ancient Aliens', 27, 11, '2019-11-01', 7),
+  (2, 1, 'Alien 3', 23, 18, '2016-01-29', 8),
+  (3, 2, 'Master Mind', 12, 8, '2007-10-05', 5),
+  (4, 2, 'Veritas', 9, 8, '2021-10-15', 6),
+  (5, 3, 'Rise to Rebellion', 18, 2, '1991-04-17', 10),
+  (6, 3, 'Glorious Cause', 9, 1, '2017-07-23', 8)
 ;
 
 -- COMMIT;
