@@ -14,7 +14,7 @@
 	<script src="js/sorttable.js"></script>
 	
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ms-auto">
+	<nav class="navbar navbar-expand-md sticky-top ms-auto">
 		<div class="container-fluid">
 			<a href="img/SOAA-logo.jpeg"><img src="img/SOAA-logo.jpeg" class="nav-logo"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
