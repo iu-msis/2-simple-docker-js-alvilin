@@ -52,4 +52,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other'); //sending a 303 reponse code 'go somewhere else for the rest of the answer using a GET'
-header('Location: ../offer/?student=' . $_POST['booktracker']); //GET points to offer api
+header('Location: ../offer/?student=' . $_POST['bookId']); //GET points to offer api
