@@ -32,7 +32,7 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare( //variable calling PDO function for database object
   'INSERT INTO offer (bookId, bookTitle, msrp, usedPrice, publishedDate, rating)
-  VALUES (?, ?, ?, ?, ?, ?)' //?=placeholder
+  VALUES (?, ?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
