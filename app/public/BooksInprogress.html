@@ -73,13 +73,18 @@
                         <td>{{ prettyDollar(offer.usedPrice) }}</td>
                         <td>{{ offer.publishedDate }}</td>
 						<td>{{ offer.rating }}</td>
+						<td>
+							<button type="button" v-on:click="handleEditOffer(offer)" class="btn btn-outline-secondary btn-sm">Edit</button>
+							<button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
+  
+						  </td>
                     </tr>
                 </tbody>
             </table>
 			<div class="noOffers" v-if="! offers.length">
 				<h3>No books. 😥</h3>
 			</div>
-			<form v-on:submit.prevent="postNewOffer">
+			<form v-on:submit.prevent="postOffer">
 				<div class="mb-3">
 				  <label for="bookTitle" class="form-label">Book Title</label>
 				  <input type="text" v-model="offerForm.bookTitle"
@@ -101,8 +106,10 @@
 					<label for="rating" class="form-label">rating</label>
 					<input type="number" v-model="offerForm.rating" class="form-control" id="rating">
 				  </div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			  </form>
+				  <button type="submit" class="btn btn-primary">{{ selectedOffer === null ? "Add " : "Edit " }} Book</button>
+				  <button type="button" class="btn btn-outline-secondary" 
+					 v-if="selectedOffer"
+					 v-on:click="handleResetEdit">Cancel Edit</button>			  </form>
 			</div>
 		</div>
 
