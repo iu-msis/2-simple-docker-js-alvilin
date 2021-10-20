@@ -85,7 +85,7 @@ const SomeApp = {
             });
         },
         postNewOffer(evt) {
-          this.offerForm.studentId = this.selectedStudent.id;        
+          this.offerForm.bookId = this.selectedStudent.id;        
           
           console.log("Creating!", this.offerForm);
   
