@@ -56,6 +56,7 @@
 
           <div class="col col-8" v-if="selectedStudent">
             <h1>Reviewed books for {{ selectedStudent.name }}</h1>
+
             <table class="table">
               <thead>
                 <tr>
@@ -79,32 +80,9 @@
 			<div class="noOffers" v-if="! offers.length">
 				<h3>No books. 😥</h3>
 			</div>
-			<form v-on:submit.prevent="postNewOffer">
-				<div class="mb-3">
-				  <label for="bookTitle" class="form-label">Book Title</label>
-				  <input type="text" v-model="offerForm.bookTitle"
-				   class="form-control" id="bookTitle">
-				</div>
-				<div class="mb-3">
-				  <label for="msrp" class="form-label">msrp</label>
-				  <input type="number" v-model="offerForm.msrp" class="form-control" id="msrp">
-				</div>
-				<div class="mb-3">
-				  <label for="usedPrice" class="form-label">usedPrice</label>
-				  <input type="number" v-model="offerForm.usedPrice" class="form-control" id="usedPrice">
-				</div>
-				<div class="mb-3">
-				  <label for="publishedDate" class="form-label">publishedDate</label>
-				  <input type="date" v-model="offerForm.publishedDate" class="form-control" id="publishedDate">
-				</div>
-				<div class="mb-3">
-					<label for="rating" class="form-label">rating</label>
-					<input type="number" v-model="offerForm.rating" class="form-control" id="rating">
-				  </div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			  </form>
 			</div>
 		</div>
+
 
 	<!--- Jumbotron -->
 	<div class="container-fluid">
